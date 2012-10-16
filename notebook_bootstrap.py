@@ -4,7 +4,7 @@ from subprocess import Popen, PIPE
 from os.path import isdir, join, basename
 from os import chdir
 
-is_64bits = sys.maxsize > 2**32
+is_64bits = sys.maxsize > 2 ** 32
 
 PIP_URL = "http://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz"
 EZ_SETUP_URL = "http://peak.telecommunity.com/dist/ez_setup.py"
@@ -15,6 +15,7 @@ if is_64bits:
 else:
     IPYTHON_URL = "http://pypi.python.org/packages/any/i/ipython/ipython-0.13.py2-win32.exe"
     ZMQ_URL = "https://github.com/downloads/zeromq/pyzmq/pyzmq-2.2.0.win32-py2.7.msi"
+
 
 def install_pip():
     import tarfile

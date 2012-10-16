@@ -57,7 +57,7 @@ except ImportError:
     print "installing IPython ... ",
     urlretrieve(IPYTHON_URL, basename(IPYTHON_URL))
     handle = Popen(basename(IPYTHON_URL), shell=True, stdout=PIPE, stderr=PIPE)
-    print stdout, stderr
+    print handle.communicate()
     print "installed."
 
 # Install pip
@@ -92,5 +92,5 @@ except ImportError:
     print "installing pyzmq ... ",
     urlretrieve(ZMQ_URL, basename(ZMQ_URL))
     handle = Popen(basename(ZMQ_URL), shell=True, stdout=PIPE, stderr=PIPE)
-    print stdout, stderr
+    print handle.communicate()
     print "installed."

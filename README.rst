@@ -26,6 +26,14 @@ Once the installer has finished, you can either launch the notebook with::
 
 Or by pasting the line above inside a new Shortcut (on the Desktop for instance, right-click, "Create new shortcut").
 
+Evolutions
+----------
+
+In the near future, this script could be replaced by several .exe bundles:
+* Python + this script
+* Python + IPython + tornado + pyzmq
+* the above + matplotlib
+
 Why and where it might be needed
 --------------------------------
 

@@ -12,11 +12,19 @@ How to use it
 
 Install Python 2.7 for Windows: http://www.python.org/getit
 
-Install IPython 0.13 for Windows: http://pypi.python.org/pypi/ipython
+Download the bootstrap script, and either launch it from a shell (cmd.exe)::
 
-Download the bootstrap script, and launch it::
+    C:> C:\Python27\python.exe notebook_boostrap.py
 
-    C:> [path_to_Python27]\python.exe notebook_boostrap.py
+Or by right-clicking on the file, "Open with", "Python".
+
+The installer will launch the IPython and the ZMQ installers if they are not installed, so don't panic. Mostly, all you'll have to do is click "Next" a bunch of times. If you're not new to Windows, you should be used to it by now.
+
+Once the installer has finished, you can either launch the notebook with::
+
+    C:> C:\Python27\Scripts\ipython.exe notebook
+
+Or by pasting the line above inside a new Shortcut (on the Desktop for instance, right-click, "Create new shortcut").
 
 Why and where it might be needed
 --------------------------------

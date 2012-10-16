@@ -29,7 +29,7 @@ def install_pip():
     tar.close()
 
     if isdir('C:/Python27'):
-        python_command = join("C:", "Python27", "python.exe")
+        python_command = join("C:/", "Python27", "python.exe")
     else:
         python_command = "python"
 

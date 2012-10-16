@@ -1,5 +1,9 @@
 from urllib import urlretrieve
+from os.path import isdir, join, basename
+from os import chdir
 
+PIP_URL = "http://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz"
+EZ_SETUP_URL = "http://peak.telecommunity.com/dist/ez_setup.py"
 
 def install_pip():
     from os.path import isdir, join
@@ -9,12 +13,10 @@ def install_pip():
 
     # Download pip
     # Md5: #md5=db8a6d8a4564d3dc7f337ebed67b1a85
-    urlretrieve(
-        "http://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz",
-        "pip-1.2.1.tar.gz")
+    urlretrieve(PIP_URL, basename(PIP_URL))
 
     # Install pip
-    tar = tarfile.open("pip-1.2.1.tar.gz")
+    tar = tarfile.open(basename(PIP_URL))
     tar.extractall()
     tar.close()
 
@@ -23,7 +25,7 @@ def install_pip():
     else:
         python_command = "python"
 
-    chdir("pip-1.2.1")
+    chdir(PIP_URL.split(".tar.gz")[0])
     Popen(python_command + " setup.py install",
           shell=True, stdout=PIPE, stderr=PIPE)
 
@@ -32,8 +34,7 @@ def install_pip():
 try:
     from ez_setup import main as setuptools_main
 except ImportError:
-    urlretrieve("http://peak.telecommunity.com/dist/ez_setup.py",
-                "ez_setup.py")
+    urlretrieve(EZ_SETUP_URL, basename(EZ_SETUP_URL))
     from ez_setup import main as setuptools_main
 
 # Install setuptools

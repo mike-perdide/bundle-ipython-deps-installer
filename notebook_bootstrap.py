@@ -10,10 +10,8 @@ PIP_URL = "http://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz"
 EZ_SETUP_URL = "http://peak.telecommunity.com/dist/ez_setup.py"
 
 if is_64bits:
-    IPYTHON_URL = "http://pypi.python.org/packages/any/i/ipython/ipython-0.13.py2-win-amd64.exe"
     ZMQ_URL = "https://github.com/downloads/zeromq/pyzmq/pyzmq-2.2.0.win-amd64-py2.7.msi "
 else:
-    IPYTHON_URL = "http://pypi.python.org/packages/any/i/ipython/ipython-0.13.py2-win32.exe"
     ZMQ_URL = "https://github.com/downloads/zeromq/pyzmq/pyzmq-2.2.0.win32-py2.7.msi"
 
 
@@ -49,17 +47,6 @@ except ImportError:
 # Install setuptools
 setuptools_main([])
 
-# Download & Install IPython
-try:
-    import IPython
-    print "IPython is installed."
-except ImportError:
-    print "installing IPython ... ",
-    urlretrieve(IPYTHON_URL, basename(IPYTHON_URL))
-    handle = Popen(basename(IPYTHON_URL), shell=True, stdout=PIPE, stderr=PIPE)
-    print handle.communicate()
-    print "installed."
-
 # Install pip
 try:
     from pip.commands import install
@@ -76,6 +63,15 @@ def install_distributions(distributions):
     requirement_set = command.run(opts, distributions)
     requirement_set = command.run(opts, distributions)
     requirement_set.install(opts)
+
+# Install IPython
+try:
+    import IPython
+    print "IPython is installed."
+except ImportError:
+    print "installing IPython ... ",
+    install_distributions(["ipython", ])
+    print "installed."
 
 try:
     import tornado
